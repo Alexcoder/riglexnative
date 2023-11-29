@@ -1,51 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
+import { NavigationContainer,  } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import { createDrawerNavigator } from '@react-navigation/drawer';
-import { StyleSheet, Text, View , ScrollView, Button, } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { StateContext } from "./STATE/chat/context/post";
 import { ContextProvider} from "./STATE/cementing/context/Context";
 import Header from "./Component/cementing/Header/Header";
 import Navbarr from './Component/cementing/Navbarr/Navbar';
 import Footer from './Component/cementing/Footer/Footer';
 import Sidebar from './Component/cementing/Sidebar/Sidebar';
+import { Provider } from 'react-redux';
+import { store } from "./STATE/chat/redux/store"
+
+import CasingJob from './Component/cementing/CasingJob/Job';
+
 
 export default function App() {
-// const navigation = useNavigation();
-// console.log(navigation)
+
   const Stack = createStackNavigator();
-  // const Drawer = createDrawerNavigator();
+  const Drawer = createDrawerNavigator();
   return (
+    <Provider store={store}>
     <StateContext>
       <ContextProvider>
         <NavigationContainer>
-        <Header />
-        { true && <Navbarr />}       
-        {/* <Sidebar/> */}
+         <Header />
+         { true && <Navbarr />}       
+         {/* <Sidebar/> */}
          <Stack.Navigator
           screenOptions={{
-            // header: ()=> <Header/>,
             headerShown: false
-          }}
-          >
-         {/* <Drawer.Navigator drawerContent={() => <Sidebar/>}> */}
-            <Stack.Screen name="header" component={Header} />
-         {/* </Drawer.Navigator> */}
+          }}>
+            <Stack.Screen name="casingjob" component={CasingJob} />
          </Stack.Navigator>
-          <StatusBar style="auto" />
-          <Footer/>
+        <StatusBar style="auto" />
+        <Footer/>
        </NavigationContainer> 
      </ContextProvider>
   </StateContext>
+  </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    textAlign:"center",
-    backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-  },
-});

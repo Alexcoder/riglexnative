@@ -1,5 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+import Hook from '../../../Hooks/hooks';
 import React from 'react';
+
+const {     
+  saveUserInfoInStorage,
+} = Hook();
 
 const initialState = {
    allPost : [],
@@ -42,7 +47,8 @@ const postSlice = createSlice({
          state.allPost.splice(index, 1);
        },
        login : (state, action)=>{
-         localStorage.setItem("riglex", JSON.stringify(action.payload));
+        //  localStorage.setItem("riglex", JSON.stringify(action.payload));
+         saveUserInfoInStorage("riglex", action?.payload)
          state.profile = action.payload ;
        },
        loadingStart : (state)=>{

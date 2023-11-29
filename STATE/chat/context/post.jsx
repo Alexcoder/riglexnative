@@ -1,7 +1,14 @@
 import { createContext, useContext, useState, useEffect } from "react";
-// import { useLocation } from "react-router-dom";
+import { useNavigation, useRoute } from '@react-navigation/native';
+import Hooks from "../../../Hooks/hooks";
 
 export const PostContext = createContext();
+const { navigate } = useNavigation();
+
+const {     
+  getItemInStorage,
+} = Hooks();
+
 
 export const StateContext = ({ children }) =>{
      const [profile, setProfile] = useState({
@@ -15,38 +22,14 @@ export const StateContext = ({ children }) =>{
      const[showComment, setShowComment] = useState(false);
      const[openSideBarForSmallDevice, setOpenSideBarForSmallDevice] = useState(false);
     //  const loggedIn = JSON.parse(localStorage.getItem('riglex'));
-    //  const user = loggedIn?.result
-    //  const token = loggedIn?.token;
-    //  const location = useLocation();
+     const loggedIn = getItemInStorage("riglex");
+     const user = loggedIn?.result
+     const token = loggedIn?.token;
 
-    //  function useQuery(){
-    //   return new URLSearchParams(location.search)
-    //  };
-    //  const query = useQuery();
 
-     function reverseArray(arr){
-      const length = arr.length;
-      const mid = Math.floor(length/2);
-       for(let i = 0; i < mid; i++){
-          //Swap element 
-          const temp = arr[i];
-          arr[i] = arr[length-1-i];
-          arr[length-1-i] = temp;
-       }
-       return arr
-     };
-
-// useEffect(()=>{
-//  JSON.parse(localStorage.getItem("riglex"))
-// },[location]);
-
-// useEffect(()=>{
-//   if(location.pathname===`/`){
-//     setShowComment(false)
-//   }else{
-//     setShowComment(true)
-//   }  
-// },[location.pathname])
+useEffect(()=>{
+ getItemInStorage("riglex")
+},[navigate]);
 
 
     return(
@@ -62,9 +45,8 @@ export const StateContext = ({ children }) =>{
          setOpenSideBarForSmallDevice,
 
         //  query,
-        //  user,
-        //  token,
-         reverseArray,
+         user,
+         token,
         }}
         >
           {children} 

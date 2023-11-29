@@ -1,18 +1,16 @@
 import React from 'react';
-// import { AiOutlineMenu } from "react-icons/ai";
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View , ScrollView, Button, TextInput, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View , TextInput, TouchableOpacity} from 'react-native';
 
 const Navbar = () => {
   // const route = useRoute();
-   const navigation = useNavigation();
-  // consoloe.log(route)
+   const { navigate } = useNavigation();
+   
   return (
     <View style={styles.Navbar}>
         <TouchableOpacity>
           <Text style={{color:"white",}}>
             Menu
-          {/* <AiOutlineMenu size={25}/> */}
           </Text>
         </TouchableOpacity>
         <View>
@@ -26,7 +24,7 @@ const Navbar = () => {
                <Text style={{color:"white",}}>Profile</Text>
               </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={()=>{ alert("Clicked"); navigation.navigate("header")}}>
+        <TouchableOpacity onPress={()=>{ alert("Clicked") }}>
           <Text>Click</Text>
         </TouchableOpacity>
 
