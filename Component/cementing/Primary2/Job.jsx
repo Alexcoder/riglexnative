@@ -3,10 +3,9 @@ import InputField from "./Input/Input";
 import useCsgDobData from "./InputData";
 import Preview from "./Preview";
 import Result from "./Result/Result";
-// import "./Input/styles.css";
 import { useGlobalState } from "../../../STATE/cementing/jobContext";
 
-import { View, Text , Button, StyleSheet} from "react-native";
+import { View, Text , Button, StyleSheet, TouchableOpacity} from "react-native";
 
 
 const Job = () => {
@@ -23,33 +22,63 @@ const Job = () => {
     const goTo = (myPage) => {
         if(page > myPage) setPage(myPage);
         return
-    }
+    };
+
+    const  nav_btn =(pageNumber)=> {
+      return{
+        backgroundColor: page===pageNumber ? "green" : "white",
+        borderWidth: 1, 
+        borderColor:"lightgray", 
+        borderRadius: 8,
+        width: 50,
+        padding: 8,
+      }
+    };
+    //Temporal CSS For Select Job Touchable Opactity
+    const selectJob = (size) =>{
+      return{
+        color: casingType===size ? "white" : "black",
+        backgroundColor: casingType===size ? "green" : "white",
+        padding: 10,
+        fontWeight: 700,
+        borderRadius: 5,     
+      }
+    };
       
   return (
       <View 
-    //   className="job"
+    style={{
+        display:"flex",
+        justifyContent:"space-between",
+        alignItems:"center",
+        paddingTop: 0,
+        paddingBottom: 20,
+        gap: 20, 
+        padding: 2,
+        width: "",
+        color: "white",  
+        backgroundColor:"black", 
+        flex: 1, 
+    }}
       >
 
-        <Text 
-        //  style={{flex: 4}}
-         >Casing Type 
-         </Text>
+        <Text style={{color:"white", paddingTop: 20}}>Casing Type </Text>
         <View
-        //  className="type"
-        style={{display: "flex", gap: 3, flexDirection:"row", width: "200%"}}
+        style={{display: "flex", gap: 20, flexDirection:"row", alignItems:"center",
+        width: "", borderWidth: 1.5, borderColor:"lightgray",padding: 15, borderRadius: 10}}
          >
-            <Button 
-            title="13-3/8 inch"
-            //  className={casingType==="13-3/8 inch"? "btn-group" : "btn"} 
-            onPress={()=> setCasingType("13-3/8 inch")}/>
-            <Button 
-             title="9-5/8 inch"
-             //  className={casingType==="9-5/8 inch"? "btn-group" : "btn"} 
-             onPress={()=> setCasingType("9-5/8 inch")}/>
-            <Button 
-             title="7 inch"
-            //  className={casingType==="7 inch"? "btn-group" : "btn"} 
-             onPress={()=> setCasingType("7 inch")}/>
+          <TouchableOpacity
+            onPress={()=> setCasingType("13-3/8 inch")}>
+            <Text style={ selectJob("13-3/8 inch") }>13-3/8 inch</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=> setCasingType("9-5/8 inch")}>
+            <Text style={ selectJob("9-5/8 inch") }>9-5/8 inch</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=> setCasingType("7 inch")}>
+            <Text style={ selectJob("7 inch") }>7 inch</Text>
+          </TouchableOpacity>
         </View>
         { page===1 &&
             InputData1.map((item, i)=>
@@ -70,52 +99,56 @@ const Job = () => {
        { page===5 && <Preview /> }
        { page===6 && <Result  /> }
         <View
-        //  style={{display:"flex", gap:"1rem", flexWrap:"nowrap",}}
+         style={{display:"flex", flexDirection:"row", gap: 8, }}
          >
-            <Button
-            title="" 
-             onPress={()=> goTo(1)} 
-             style={styles.nav_btn}
-             />
-            <Button
-            title="" 
-             onPress={()=> goTo(2)} 
-             style={styles.nav_btn}
-             />
-            <Button
-             title="" 
-             onPress={()=> goTo(3)} 
-             style={styles.nav_btn}
-             />
-            <Button
-            title="" 
-             onPress={()=> goTo(4)} 
-             style={styles.nav_btn}
-             />
-            <Button
-            title="" 
-             onPress={()=> goTo(5)}
-             style={styles.nav_btn}
-             />
-            <Button
-            title="" 
-             onPress={()=> goTo(6)} 
-             style={styles.nav_btn}
-             />
+            <TouchableOpacity
+              onPress={()=> goTo(1)} 
+              style={nav_btn(1)}>
+                <Text></Text>
+             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={()=> goTo(2)} 
+              style={nav_btn(2)}>
+             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={()=> goTo(3)} 
+              style={nav_btn(3)}>
+             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={()=> goTo(4)} 
+              style={nav_btn(4)}>
+             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={()=> goTo(5)} 
+              style={nav_btn(5)}>
+             </TouchableOpacity>
+            <TouchableOpacity
+              onPress={()=> goTo(6)} 
+              style={nav_btn(6)}>
+             </TouchableOpacity>
         </View>
         <View 
-          style={{display:"flex", gap: 4 }}
+          style={{display:"flex", gap: 28, flexDirection:"row",
+           alignItems:"center", justifyContent:"space-between" }}
           >
         { page > 1 && 
-          <Button 
-          title="back" 
-          style={{flex:"1 1 50%", outline:"none"}}   
-          onPress={()=>pageNumber("prev")} />}
+        <TouchableOpacity 
+         onPress={()=>pageNumber("prev")} 
+        >
+          <Text 
+          style={{color:"white",
+           borderWidth: 1, padding:8, minWidth: 150, 
+           textAlign:"center",
+           backgroundColor:"purple",
+           borderRadius:2,
+           }} >BACK</Text>
+        </TouchableOpacity>
+          }
         {
         page < 6 && 
         <Button
           title={page===4? "Preview" : page===5? "Calculate" : "next"}
-          style={{flex:"1 1 50%", outline:"none"}}  
+          // style={{flex:"1 1 50%", outline:"none"}}  
           onPress={()=>pageNumber("next")} />
         }
 
@@ -127,12 +160,6 @@ const Job = () => {
 export default Job;
 
 const styles = StyleSheet.create({
-  nav_btn : {
-  //  flex:"1 1 10%",  
-   flex: 1,  
-  //  background: page===6? "green" : "white",
-   borderWidth: 1, 
-   borderColor:"gray", 
-  //  outline:"none"
+  nav_btn2 : {
   }
 })

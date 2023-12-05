@@ -56,7 +56,12 @@ const Hook = () => {
           };
           return
         };
-       }
+       };
+
+      // OnChange for Object
+      function handleObjectChange(event, name, setState){
+         setState(prev=>({...prev,[name] : event}))
+      };
   
 
 
@@ -68,6 +73,7 @@ const Hook = () => {
     getItemInStorage,
     reverseArray,
     recursiveSearchId,
+    handleObjectChange,
   }
 }
 

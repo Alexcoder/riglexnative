@@ -11,7 +11,7 @@ function useCsgDobData(){
        {
                title: "casingOD",
                value: wellData2.casingOD(casingType),
-               placeholder: "",
+               placeholder: "0",
                desc : `${casingType} csg OD`,
                disabled : casingType!=="" ? true : false  ,    
             },

@@ -37,8 +37,8 @@ export default function App() {
           screenOptions={{
             headerShown: false
           }}>
-            {/* <Stack.Screen name="demo" component={ Show } /> */}
             <Stack.Screen name="casingjob" component={ CasingJob } />
+            <Stack.Screen name="demo" component={ Show } />
          </Stack.Navigator>
         <StatusBar style="auto" />
         <Footer/>

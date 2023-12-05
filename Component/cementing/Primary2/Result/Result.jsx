@@ -5,10 +5,10 @@ import { Text, View } from 'react-native';
 const Result = () => {
   const { Lead, Tail, Displacement } = Calculate();
   return (
-    <View style={{color: "white"}}>
-        <Text>Lead Slurry {Lead()} bbl</Text>
-        <Text>Tail Slurry {Tail()} bbl</Text>
-        <Text>Displacement {Displacement()} bbl</Text>
+    <View >
+        <Text style={{color: "white"}}>Lead Slurry {Lead()} bbl</Text>
+        <Text style={{color: "white"}}>Tail Slurry {Tail()} bbl</Text>
+        <Text style={{color: "white"}}>Displacement {Displacement()} bbl</Text>
     </View>
   )
 }
