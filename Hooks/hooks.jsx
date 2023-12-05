@@ -1,7 +1,10 @@
 import React from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from '@react-navigation/native';
 
 const Hook = () => {
+  const navigation = useNavigation();
+
     // Save Item to Async Storage
      async function saveUserInfoInStorage(name, itemToSave) {
         const stringifyItemToSave = JSON.stringify(itemToSave)
@@ -44,6 +47,7 @@ const Hook = () => {
 
 
   return {
+    navigation,
     saveUserInfoInStorage,
     saveInStorage,
     getItemInStorage,
