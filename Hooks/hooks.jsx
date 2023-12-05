@@ -42,6 +42,21 @@ const Hook = () => {
          }
          return arr
        };
+
+       //Recursive Search for ID
+       function recursiveSearchId(array, searchId){
+        if(array.length){
+          for(const item of array){
+            if(item._id === searchId){
+              return item
+            }else if(array.length>0){
+              const isFound = recursiveSearchId(item.comment, searchId)
+              return isFound
+            };
+          };
+          return
+        };
+       }
   
 
 
@@ -52,7 +67,8 @@ const Hook = () => {
     saveInStorage,
     getItemInStorage,
     reverseArray,
+    recursiveSearchId,
   }
 }
 
-export default Hook
+export default Hook;
