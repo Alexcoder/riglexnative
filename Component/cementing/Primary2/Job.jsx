@@ -28,8 +28,8 @@ const Job = () => {
       return{
         backgroundColor: page===pageNumber ? "green" : "white",
         borderWidth: 1, 
-        borderColor:"lightgray", 
-        borderRadius: 8,
+        // borderColor:"lightgray", 
+        borderRadius: 3,
         width: 50,
         padding: 8,
       }
@@ -137,8 +137,9 @@ const Job = () => {
         >
           <Text 
           style={{color:"white",
-           borderWidth: 1, padding:8, minWidth: 150, 
-           textAlign:"center",
+           borderWidth: 1, padding:8, 
+          //  minWidth: 200, 
+          //  textAlign:"start",
            backgroundColor:"purple",
            borderRadius:2,
            }} >BACK</Text>
@@ -148,7 +149,6 @@ const Job = () => {
         page < 6 && 
         <Button
           title={page===4? "Preview" : page===5? "Calculate" : "next"}
-          // style={{flex:"1 1 50%", outline:"none"}}  
           onPress={()=>pageNumber("next")} />
         }
 

@@ -11,11 +11,12 @@ const InputField = ( { item } ) => {
   return (
     <View
     style={{
+      // flex: 1,
       display:"flex", 
       flexDirection:"row", 
-      justifyContent: 'space-between',
       alignItems:"center",
-      gap: 5, 
+      justifyContent: 'space-between',
+      gap: 45, 
      }}
     >
         <Text style={{color:"white"}}>{item.desc}</Text>
@@ -23,9 +24,7 @@ const InputField = ( { item } ) => {
         style={{
           borderWidth: 1.5, 
           borderColor:"lightgray", 
-          paddingTop: 1, 
-          paddingBottom: 1, 
-          paddingLeft: 8, 
+          padding: 4, 
           width: 100,
           color:"white"
 
