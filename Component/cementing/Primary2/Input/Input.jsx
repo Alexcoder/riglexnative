@@ -1,13 +1,11 @@
 import { useGlobalState } from "../../../../STATE/cementing/jobContext";
 import { View, Text, TextInput } from 'react-native';
-import Hooks from "../../../../Hooks/hooks"
+import Hook from "../../../../Hooks/cementingHooks";
 
-// import CalculatorIcon from "../../../calculatorIcon"
-// import "./styles.css";
 
 const InputField = ( { item } ) => {
     const { wellData2, setWellData2 } = useGlobalState();
-    const { handleObjectChange } = Hooks()
+    const { handleObjectChange } = Hook()
      
         
   return (

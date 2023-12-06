@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View , TextInput, TouchableOpacity} from 'react-native';
-import Hook from '../../../Hooks/hooks';
+import Hook from '../../../Hooks/cementingHooks';
 
 const Footer = () => {
   const { navigation } = Hook();
@@ -27,7 +27,8 @@ const Footer = () => {
 
   const link = [
     { page: "CasingJob", route: "casingjob" },
-    { page: "Chat", route: "chat", },
+    // { page: "Chat", route: "chat", },
+    { page: "Plug", route: "plugjob", },
   ];
 
   return (
@@ -52,11 +53,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent:'space-between',
-        paddingTop: 12,
-        paddingBottom:  12,
-        paddingLeft: 2,
-        paddingRight:  2,
-        backgroundColor: "white",
+        paddingTop: 6,
+        paddingBottom:  6,
+        paddingLeft: 6,
+        paddingRight:  6,
+        backgroundColor: "lightgray",
 
         // height: 20,
         gap: 12,

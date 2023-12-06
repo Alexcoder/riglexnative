@@ -3,7 +3,7 @@ import { NavigationContainer,  } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text } from 'react-native';
 // import { createDrawerNavigator } from '@react-navigation/drawer';
-// import { StateContext } from "./STATE/chat/context/post";
+import { StateContext } from "./STATE/chat/context/post";
 import Header from "./Component/cementing/Header/Header";
 import Navbarr from './Component/cementing/Navbarr/Navbar';
 import Footer from './Component/cementing/Footer/Footer';
@@ -13,6 +13,7 @@ import { JobContext } from './STATE/cementing/jobContext';
 // import { store } from "./STATE/chat/redux/store"
 // 
 import CasingJob from './Component/cementing/Primary2/Job';
+import PlugJob from "./Component/cementing/pages/Plug/Plug"
 
 
 export default function App() {
@@ -20,15 +21,9 @@ export default function App() {
   const Stack = createStackNavigator();
   // const Drawer = createDrawerNavigator();
 
-  const Show =()=>{
-    return(
-      <View>
-        <Text>Home jjjjjjjj ghygghh</Text>
-      </View> 
-    )
-  }
   return (
-    <JobContext>
+    <StateContext>
+      <JobContext>
         <NavigationContainer>
          <Header />
          { true && <Navbarr />}       
@@ -37,13 +32,14 @@ export default function App() {
           screenOptions={{
             headerShown: false
           }}>
+            <Stack.Screen name="plugjob" component={ PlugJob } />
             <Stack.Screen name="casingjob" component={ CasingJob } />
-            <Stack.Screen name="demo" component={ Show } />
          </Stack.Navigator>
         <StatusBar style="auto" />
         <Footer/>
        </NavigationContainer> 
-       </JobContext>
+        </JobContext>
+     </StateContext>  
   );
 }
 

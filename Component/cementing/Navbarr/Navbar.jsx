@@ -24,17 +24,6 @@ const Navbar = () => {
                <Text style={{color:"white",}}>Profile</Text>
               </TouchableOpacity>
         </View>
-        <TouchableOpacity onPress={()=>{ alert("Clicked") }}>
-          <Text>Click</Text>
-        </TouchableOpacity>
-
-        <View style={{
-          position: "absolute",
-          top: 30,
-          right: 6,
-        }}>
-          <Text>DropBar</Text>
-        </View>
       
     </View>
   )

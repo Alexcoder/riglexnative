@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { useGlobalState } from '../../../STATE/cementing/context/Context';
-import "./styles.css";
+// import "./styles.css";
 
 const Calculator = () => {
     const [calc, setCalc] = useState("");

@@ -1,0 +1,58 @@
+
+.landing-cont{
+    display: grid;
+    // width: 100vw;
+    place-content: center;
+    place-items: center;
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @keyframes myAnimation {
+        0% {font-size: 35px; color: blue;}
+        100% {font-size: 40px; color: blue}
+    }
+    .wrapper{
+        color : blue;
+        // font-size: 40px;
+        font-weight: 500;
+        // animation-name: myAnimation ;
+        // animation-duration: 7s ;
+        // animation-timing-function: ease-in-out ;
+        // animation-iteration-count: 1;
+        // animation-direction: normal;
+    }
+      .wrapper  div{
+            flex: 1 1 0%;
+        }
+    }
+    
+// }
+@media screen and (max-width: 720px) {
+    .landing-cont{
+            @keyframes myAnimation {
+                0% {font-size: 20px; color: blue;}
+                30% {font-size: 23px; color: blue;}
+                70% {font-size: 27px; color: blue;}
+                100% {font-size: 30px; color: blue}
+            }
+            .wrapper{
+                color : blue;
+                font-size: 30px;
+                font-weight: 500;
+                animation-name: myAnimation ;
+                animation-duration: 7s ;
+                animation-timing-function: ease-in-out ;
+                animation-iteration-count: 1;
+                animation-direction: normal;
+            }
+        
+          .wrapper  div{
+                flex: 1 1 0%;
+            }
+        
+    }
+    
+    
+}

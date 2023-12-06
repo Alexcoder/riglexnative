@@ -1,0 +1,36 @@
+.plug-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin-top: 5rem;
+    
+}
+.plug-btn-cont{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: auto;
+}
+.plug-btn-cont >button{
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.2rem;
+    border: none;
+    box-shadow: 1px 1px 1px 1px gray;
+}
+.plug-btn-background{
+    background: green;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px){
+    .plug-cont{
+        margin-top: 6rem;
+    }
+    .plug-btn-cont{
+      flex-direction: column;
+    }
+     
+}
