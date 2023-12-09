@@ -10,7 +10,7 @@ const Result =({factor, modeConversion, setModeConversion })=>{
 
 
     return(
-        <View style={{marginTop:"1rem"}}>
+        <View style={{marginTop: 52}}>
          <Text>
                 
             {

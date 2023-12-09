@@ -19,11 +19,11 @@ const Input =(props)=>{
                  keyboardType='numeric' 
                 //  value={factor} 
                  placeholder={`${baseUnit}` || "input value"} 
-                 style={{fontWeight: "700", minWidth:"60",  }}
+                 style={{fontWeight: "700", width: 200,  }}
                  onChangeText={(e)=>  setFactor(modeConversion.length?  e : "")}
                 />
               {/* <div onClick={Revert}><SyncAltIcon sx={{marginTop:"1rem", }}/></div> */}
-              <Text onPress={Revert} style={{marginTop: 4, }}>Revert</Text>
+              <Text onPress={Revert} style={{marginTop: 4, width: "45" }}>Revert</Text>
           </View>
           </View>
     

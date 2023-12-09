@@ -19,7 +19,7 @@ const ConversionPage = () => {
 // },[modeConversion])
 
 
-const handleClear =async()=> {
+const handleClear =()=> {
   setFactor(0); 
   saveInStorage('factor', "0"); 
   setModeConversion("")
@@ -53,7 +53,7 @@ const handleBack =()=> navigation.navigate("casingjob");
        <Button 
         title="CLEAR"
         className= "button_clear" 
-        color="red"
+        color="darkred"
         onPress={handleClear} />
         <Button 
          title="EXIT" 
