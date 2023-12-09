@@ -16,11 +16,13 @@ const Footer = () => {
       return {
         color:"blue",
         fontWeight: 700,
+        fontSize: 11,
       }
     }else {
       return {
         color:"black",
         fontWeight: 700,
+        fontSize: 11,
       }
     }
   }
@@ -29,6 +31,7 @@ const Footer = () => {
     { page: "CasingJob", route: "casingjob" },
     // { page: "Chat", route: "chat", },
     { page: "Plug", route: "plugjob", },
+    { page: "Conversion", route: "conversion", },
   ];
 
   return (

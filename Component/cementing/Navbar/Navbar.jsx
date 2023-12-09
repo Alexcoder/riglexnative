@@ -1,53 +1,62 @@
-import React, { useState } from 'react';
-// import {useNavigate, useLocation} from "react-router-dom";
-import { CgProfile } from "react-icons/cg";
-import { BsSearch } from "react-icons/bs";
-import { GrNotification } from "react-icons/gr";
-// import { BiHome } from "react-icons/bi";
-import { AiOutlineMenu } from "react-icons/ai";
-import DropBar from './Children/Dropbar';
-import {styles} from "./Styles.jsx";
-import { usePostContext } from '../../../STATE/chat/context/post';
-import { StyleSheet, Text, View , ScrollView, Button} from 'react-native';
-
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View , TextInput, TouchableOpacity} from 'react-native';
 
 const Navbar = () => {
-  // const navigate = useNavigate();
-  const { setOpenSideBarForSmallDevice, user } = usePostContext();
-  const [dropBar, setDropBar] =  useState(false);
-  // const { pathname } = useLocation();
-  // const user = true;
-  
-
+  // const route = useRoute();
+   const { navigate } = useNavigation();
+   
   return (
-    <View style={styles.navbar_container}>
-
-          {/* <View onClick={()=> setOpenSideBarForSmallDevice(prev=> !prev)}> <AiOutlineMenu size={25}/></View> */}
-        
-        <Text style={styles.navbar_icon_group}>
-          {/* { user &&
-            <View style={styles.navbar_username}>
-              {`${user?.firstName.charAt(0)}`}
-              {`${user?.lastName.charAt(0)}`}
-            </View>
-          } */}
-          <Text style={styles.navbar_search}> 
-            {/* <input 
-              style={styles.navbar_search_input}
-             placeholder="Search ..."/> */}
-            <BsSearch style={{marginTop:"0.5rem", color:"black" }}/> 
+    <View style={styles.Navbar}>
+        <TouchableOpacity>
+          <Text style={{color:"white",}}>
+            Menu
           </Text>
-          <Text onClick={()=> setDropBar(!dropBar)} >
-            <CgProfile size={22} style={{marginTop:"0.5rem"}}/>
-          </Text>
-        </Text>  
-       {/* { (dropBar && pathname!=="/login") && 
-        <DropBar 
-          setDropBar={setDropBar} 
-          navigate={navigate}/>
-       } */}
+        </TouchableOpacity>
+        <View>
+        </View>
+        <View style={{display:"flex", flexDirection:"row", gap: 12, alignItems:"center",}}>
+            <Text style={{color:"white", fontSize: 15, fontWeight: 800}}>Alex Ifeanyi</Text>
+            <TextInput 
+              placeholder='Search...'
+              style={styles.TextInput}/>
+              <TouchableOpacity>
+               <Text style={{color:"white",}}>Profile</Text>
+              </TouchableOpacity>
+        </View>
+      
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+    Navbar:{
+        display:"flex",
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent:'space-between',
+        paddingLeft: 4,
+        paddingRight: 4,
+        paddingTop: 5,
+        paddingBottom: 5,
+        backgroundColor: "rgb(78, 116, 156)",
+
+        // height: 20,
+        // gap: 12,
+        // margin: 30,
+        borderWidth: 1,
+        borderColor:"gray",
+    },
+    TextInput:{
+        borderColor:"gray",
+        backgroundColor:"white",
+        borderWidth: 1,
+        borderRadius: 7,
+        width: 100,
+        fontSize: 12,
+        padding: 4,
+        height: 30,
+    }
+})
 
 export default Navbar
