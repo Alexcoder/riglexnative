@@ -15,9 +15,13 @@ import { JobContext } from './STATE/cementing/jobContext';
 import CasingJob from './Component/cementing/CasingJob/Job';
 import PlugJob from "./Component/cementing/pages/Plug/Plug";
 import ConversionPage from './Component/cementing/Conversion/Conversion';
+import QuizHome from "./Component/quiz/home/home";
+import QuizQuestion from './Component/quiz/question/question';
+import QuizResult from './Component/quiz/result/result';
 
 
 export default function App() {
+  
 
   const Stack = createStackNavigator();
   // const Drawer = createDrawerNavigator();
@@ -33,6 +37,8 @@ export default function App() {
           screenOptions={{
             headerShown: false
           }}>
+            <Stack.Screen name="quiz" component={ QuizHome } />
+            <Stack.Screen name="question" component={ QuizQuestion } />
             <Stack.Screen name="conversion" component={ ConversionPage } />
             <Stack.Screen name="plugjob" component={ PlugJob } />
             <Stack.Screen name="casingjob" component={ CasingJob } />

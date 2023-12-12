@@ -3,16 +3,20 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
 
     conversion_cont :{
-        margin: 18, 
-        padding: 8,
+        marginTop: 48, 
+        padding: 18,
         // gap: 6,
         flex: 1,
-        borderWidth: 1,
-        borderColor:"lightgray",
+        // borderWidth: 1,
+        // borderColor:"lightgray",
         height: "fit-content",
         borderRadius: 4,
     },
     main_container :{
+        marginTop: 43,
+        padding: 8,
+        borderWidth: 1,
+        borderColor:"lightgray",
         backgroundColor: "whiteSmoke",
         // flex: 1,
         height: 400,
@@ -34,11 +38,10 @@ export const styles = StyleSheet.create({
         textAlign: "center",
     },
     select : {
+        // height: 28,
         fontSize: 14,
         borderRadius: 4,
         color:"black",
-        // padding: 2,
-        // minWidth: 200,
         borderWidth: 1,
         borderColor: "lightgray",
         textAlign: "center",
@@ -46,11 +49,6 @@ export const styles = StyleSheet.create({
     },
     input_cont : {
         display: "flex",
-        // flexDirection: "column",
-        // gap: 12,
-        // alignItems: "center",
-        // justifyContent: "center",
-        // width: '100%',
     },
     h1_data : {
         color: "blue",
@@ -81,31 +79,13 @@ export const styles = StyleSheet.create({
     },
     button_container :{
         display: "flex",
-        // flexDirection: "row",
-        // textAlign: "center",
-        // justifyContent: "center",
-        // alignItems: "center",
         gap: 16,
-        marginTop: 200,
+        marginTop: 50,
     },
     button_clear :{
-        // padding: 8,
-        // borderWidth: 1,
-        // borderColor: "transparent",
-        // color: "white",
-        // background: "darkred",
-        // borderRadius: 2,
-        // fontSize: 14,
     },
     
     button_back :{
-        // padding: 4,
-        // borderWidth: 1,
-        // borderColor : "transparent",
-        // color: "white",
-        // background: "blue",
-        // borderRadius: 4,
-        // fontSize: 14,
     },
     
     lexwares :{

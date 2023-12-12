@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import  {Picker}  from "@react-native-picker/picker";
 import {styles} from '../style.jsx';
 
@@ -6,7 +6,9 @@ const Select =(props)=>{
     const {modeConversion, setModeConversion}= props;
 
     return(
-        <View style={styles.select}>
+      <View>
+
+        <ScrollView style={styles.select}>
        <Picker   
         selectedValue={modeConversion} 
         onValueChange={(itemValue, itemIndex)=> setModeConversion(itemValue)}
@@ -94,7 +96,8 @@ const Select =(props)=>{
               value={"Fahrenheit-Centigrade"}
               label="Fahrenheit To Celsius"/>
             </Picker>
-        </View> 
+        </ScrollView> 
+        </View>
     )
 }
 

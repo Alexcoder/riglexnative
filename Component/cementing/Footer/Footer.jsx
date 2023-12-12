@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View , TextInput, TouchableOpacity} from 'react-native';
-import Hook from '../../../Hooks/cementingHooks';
+import { useNavigation } from '@react-navigation/native';
 
 const Footer = () => {
-  const { navigation } = Hook();
+  const navigation = useNavigation();
   const [selectedRoute, setSelectedRoute] = useState('')
 
   const handleNavigate =(item)=>{
-   navigation.navigate(item.route);
-   setSelectedRoute(item.route)
+   navigation.navigate(item.link);
+   setSelectedRoute(item.link)
   };
 
   const handleClickRouteColor = (item)=>{
-    if(item.route===selectedRoute){
+    if(item.link===selectedRoute){
       return {
         color:"blue",
         fontWeight: 700,
@@ -28,10 +28,11 @@ const Footer = () => {
   }
 
   const link = [
-    { page: "CasingJob", route: "casingjob" },
-    // { page: "Chat", route: "chat", },
-    { page: "Plug", route: "plugjob", },
-    { page: "Conversion", route: "conversion", },
+    { page: "CasingJob", link: "casingjob" },
+    // { page: "Chat", link: "chat", },
+    { page: "Plug", link: "plugjob", },
+    { page: "Conversion", link: "conversion", },
+    { page: "Quiz", link: "quiz", },
   ];
 
   return (

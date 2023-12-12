@@ -1,9 +1,10 @@
 import React from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const Hook = () => {
   const navigation = useNavigation();
+  const route = useRoute();
 
     // Save Item to Async Storage
      async function saveUserInfoInStorage(name, itemToSave) {
@@ -26,6 +27,14 @@ const Hook = () => {
     async function getItemInStorage(itemToFetch){
         try{
             await JSON.parse(AsyncStorage.getItem(itemToFetch))
+         }catch(err){
+           console.log(err)
+         } 
+    };
+    // Clear Item from storage
+    async function clearItemInStorage(itemToClear){
+        try{
+            await (AsyncStorage.clear(itemToClear))
          }catch(err){
            console.log(err)
          } 
@@ -68,9 +77,11 @@ const Hook = () => {
 
   return {
     navigation,
+    route,
     saveUserInfoInStorage,
     saveInStorage,
     getItemInStorage,
+    clearItemInStorage,
     reverseArray,
     recursiveSearchId,
     handleObjectChange,
