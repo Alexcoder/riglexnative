@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 const Hook = () => {
   const navigation = useNavigation();
   const route = useRoute();
+
+  const [storedValue, setStoredValue] = useState("")
 
     // Save Item to Async Storage
      async function saveUserInfoInStorage(name, itemToSave) {
@@ -18,23 +20,38 @@ const Hook = () => {
   // Save random Item To Async Storage
    async function saveInStorage(name, itemToSave){
         try{
-            await AsyncStorage.setItem(name, itemToSave)
+            await AsyncStorage.setItem(name, itemToSave.toString())
          }catch(err){
            console.log(err)
          } 
     };
-    // Get Item from storage
-    async function getItemInStorage(itemToFetch){
+    // Get User Item from storage
+    async function getUserItemInStorage(itemToFetch){
         try{
-            await JSON.parse(AsyncStorage.getItem(itemToFetch))
-         }catch(err){
+           const fetched = await JSON.parse(AsyncStorage.getItem(itemToFetch))
+           if(fetched !==null){
+             setStoredValue(fetched )
+           }
+          }catch(err){
            console.log(err)
+          } 
+    };
+    // Get User Item from storage
+    const getItemInStorage= async(name) => {
+      try{
+        const fetched = await AsyncStorage.getItem(name)
+        if(fetched !==null){
+          // setStoredValue(fetched )
+        }
+        }catch(err){
+          console.log(err)
          } 
     };
     // Clear Item from storage
     async function clearItemInStorage(itemToClear){
         try{
-            await (AsyncStorage.clear(itemToClear))
+          const fetched = await (AsyncStorage.clear(itemToClear))
+          setStoredValue( "" )
          }catch(err){
            console.log(err)
          } 
@@ -78,8 +95,10 @@ const Hook = () => {
   return {
     navigation,
     route,
+    storedValue,
     saveUserInfoInStorage,
     saveInStorage,
+    getUserItemInStorage,
     getItemInStorage,
     clearItemInStorage,
     reverseArray,

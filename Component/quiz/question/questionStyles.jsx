@@ -16,8 +16,9 @@ export const styles = StyleSheet.create({
     cate_count_container:{
         // width: '100%',
         display: 'flex',
-        justifyContent: 'space-evenly',   
-        margin: 10,
+        flexDirection:"row",
+        justifyContent: 'space-between',   
+        // margin: 10,
     },
      category:{
         color: 'black',
@@ -39,7 +40,7 @@ export const styles = StyleSheet.create({
     },
     
      question_container :{
-        width: '100%',
+        width: '90%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -86,10 +87,14 @@ export const styles = StyleSheet.create({
       },
         
      singleOption :{
-        width: '46%',
+        width: '100%',
         height: 'max-content',
-        padding: 20,
-        margin: 10,
+        // paddingTop: 20,
+        // paddingBottom: 20,
+        // paddingLeft: 40,
+        // paddingRight: 40,
+        marginTop: 20,
+        borderRadius: 2,
         // boxShadow: '0 0 2px black',
         backgroundColor: 'lightgrey',
        fontWeight: 700,
@@ -97,11 +102,34 @@ export const styles = StyleSheet.create({
        
     correct :{
         backgroundColor: 'rgb(7, 207, 0)',
-        color: 'black',     
+        color: 'black',  
+        // width: '100%',
+        // height: 'max-content',
+        // paddingTop: 20,
+        // paddingBottom: 20,
+        paddingLeft: 40,
+        paddingRight: 40,
+        // marginTop: 20,
+        // borderRadius: 2,
+        // // boxShadow: '0 0 2px black',
+       fontWeight: 700,
+
+   
     },
      wrong :{
         backgroundColor: 'rgb(233, 0, 0)',
         color: 'black',      
+    //     width: '100%',
+    //     height: 'max-content',
+        // paddingTop: 20,
+        // paddingBottom: 20,
+        paddingLeft: 40,
+        paddingRight: 40,
+    //     marginTop: 20,
+    //     borderRadius: 2,
+    //     // boxShadow: '0 0 2px black',
+       fontWeight: 700,
+
     },
      quizApp_nav_button :{
         marginTop: 8,

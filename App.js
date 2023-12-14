@@ -38,7 +38,7 @@ export default function App() {
             headerShown: false
           }}>
             <Stack.Screen name="quiz" component={ QuizHome } />
-            <Stack.Screen name="question" component={ QuizQuestion } />
+            <Stack.Screen name="quiz-question" component={ QuizQuestion } />
             <Stack.Screen name="conversion" component={ ConversionPage } />
             <Stack.Screen name="plugjob" component={ PlugJob } />
             <Stack.Screen name="casingjob" component={ CasingJob } />

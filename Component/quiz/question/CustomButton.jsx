@@ -1,13 +1,16 @@
-const CustomButton = ({ key, disabled, onClick, className, title }) => {
+import { View, Button } from "react-native";
+
+const CustomButton = ({ isEditable, onPress, className, title }) => {
   return (
-    <button
-      key={key}
-      disabled={disabled}
-      onClick={onClick}
-      className={className}
-    >
-      {title}
-    </button>
+    <View>
+      <Button
+        // key={key}
+        isEditable={isEditable}
+        onPress={onPress}
+        className={className}
+        title={title}
+      />
+    </View>
   );
 };
 

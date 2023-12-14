@@ -4,8 +4,10 @@ import { questions } from "../utilz";
 import {styles} from "./questionStyles.jsx";
 import CustomButton from "./CustomButton";
 import Hooks from "../../../Hooks/cementingHooks.jsx"
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View, Button } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const Question = ({ setShuffleQuestion }) => {
   const route = useRoute();
@@ -14,36 +16,42 @@ const Question = ({ setShuffleQuestion }) => {
   const [correct, setCorrect] = useState();
   const [options, setOptions] = useState([]);
   const [countDown, setCountDown] = useState(20);
-  const { getItemInStorage, saveInStorage,  } = Hooks();
-  const location = route;
-  const {navigate} = navigation;
+  const { getItemInStorage, saveInStorage, storedValue  } = Hooks();
 
-  const [currentIndex, setCurrentIndex] = useState(0
-    // Number(getItemInStorage("currentIndex")) || 0
+  const [currentIndex, setCurrentIndex] = useState(
+    Number(getItemInStorage("currentIndex")) || 0
   );
   const [selected, setSelected] = useState("");
-  const [score, setScore] = useState( 0
-    // Number(getItemInStorage("score")) || 0
+  const [score, setScore] = useState( 
+    (getItemInStorage("score")) || 0
   );
   const [isFinish, setIsFinish] = useState(false);
-  const isFinishInLocalStorage = getItemInStorage("is-finish");
+  const isFinishInLocalStorage =  getItemInStorage("is-finish") ;
   const { category } = route.params;
+  // console.log("storedValue", storedValue)
+  // console.log("category", category)
+  // console.log("correct", correct)
+  // console.log("option", options)
+  console.log("question", question)
 
   const filteredQuestionByCategory = useMemo(() => {
-    return questions.filter((item) => item.category === category);
+   const fetched = questions.filter((item) => item.category === category);
+   const fetchedRandom = fetched.sort(() => Math.random()- 0.5);
+    return fetchedRandom
   }, [category]);
 
   const lastIndex = filteredQuestionByCategory.length - 1;
 
   function proceedToNextQuestion(direction) {
-    if (direction === "next" && currentIndex < lastIndex) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-      saveInStorage("currentIndex", currentIndex + 1);
+    if (direction === "next" && Number(currentIndex) < Number(lastIndex)) {
+      // setCurrentIndex((prevIndex) => Number(prevIndex) + 1);
+      setCurrentIndex(Number(currentIndex) + 1);
+      saveInStorage("currentIndex", (Number(currentIndex) + 1));
       setSelected("");
       setCountDown(20);
     } else {
       setIsFinish(true);
-      saveInStorage("is-finish", !isFinish);
+      // saveInStorage("is-finish", true);
     }
     computeScore(direction);
   }
@@ -56,27 +64,31 @@ const Question = ({ setShuffleQuestion }) => {
     (direction) => {
       if (direction === "next" && selected === correct) {
         setScore((prev) => prev + 1);
-        saveInStorage("score", score + 1);
+        saveInStorage("score", (score + 1));
       }
     },
     [selected, correct, score]
   );
 
   useEffect(() => {
-    if (!isFinishInLocalStorage) {
+    if (!isFinish) {
       setQuestion(filteredQuestionByCategory[currentIndex].question);
       setCorrect(filteredQuestionByCategory[currentIndex].correct);
+      // setOptions(() =>
+      //   [correct, ...filteredQuestionByCategory[currentIndex].incorrect]
+      //   .sort(() => Math.random() - 0.5));
       setOptions(() =>
-        [correct, ...filteredQuestionByCategory[currentIndex].incorrect].sort(
-          () => Math.random() - 0.5
-        )
-      );
+        [filteredQuestionByCategory[currentIndex].correct, ...filteredQuestionByCategory[currentIndex].incorrect]
+        .sort(() => Math.random() - 0.5));
     }
 
-    if (isFinishInLocalStorage) {
-      setIsFinish(isFinishInLocalStorage);
+    // if (isFinishInLocalStorage) {
+    //   setIsFinish( true);
+    // }
+    if (true) {
+      setIsFinish( true);
     }
-  }, [currentIndex, correct, isFinishInLocalStorage]);
+  }, [currentIndex, correct,  isFinish ]);
 
   useEffect(() => {
     if (countDown === 0) {
@@ -85,7 +97,7 @@ const Question = ({ setShuffleQuestion }) => {
     let timerId;
     function decrementCountDown() {
       setCountDown((prev) => (prev === 0 ? 0 : prev - 1));
-      timerId = setTimeout(decrementCountDown, 3000);
+      // timerId = setTimeout(decrementCountDown, 3000);
     }
     timerId = setTimeout(decrementCountDown, 3000);
     return () => {
@@ -101,54 +113,49 @@ const Question = ({ setShuffleQuestion }) => {
 
   return (
     <View style={styles.quizApp_container}>
-      {!isFinishInLocalStorage && (
+      {/* {!isFinishInLocalStorage && ( */}
         <View style={styles.cate_count_container}>
-          <Text style={styles.category}>{filteredQuestionByCategory.length} Questions </Text>
-          <Text style={styles.category}>Score {score}</Text>
+           <Text style={{fontWeight: 700}}> {filteredQuestionByCategory.length} Questions </Text>
           <Text
-            style={countDown <= 5 ? styles.count_down_end : styles.count_down_start}
+          // style={countDown <= 5 ? styles.count_down_end : styles.count_down_start}
+          style={{fontWeight: 700, 
+            color:countDown <= 5 ? "red" : "blue"}}
           >
-            {countDown}
-          </Text>
+          {countDown}
+        </Text> 
         </View>
-      )}
+      {/* )} */}
 
-      {isFinishInLocalStorage && (
+      {/* {isFinishInLocalStorage && (
         <Result 
-          // location={location} 
-          // navigate={navigate}
-          // route={route}
           score={score} 
           questionCategory={filteredQuestionByCategory} />
-      )}
+      )} */}
 
-      {!isFinishInLocalStorage && (
+      {/* {!isFinishInLocalStorage && ( */}
         <View style={styles.question_container}>
-          <Text style={styles.questionNumber}>Question {currentIndex + 1}</Text>
+          <Text style={{}}>Question {currentIndex + 1}</Text>
           <View style={styles.question_con}>
-            <Text style={styles.question}>{question}</Text>
-            <View style={styles.quizApp_option_container}>
+            {/* <Text style={{}}> {question} </Text> */}
+            <Text style={{}}> {filteredQuestionByCategory[currentIndex].question} </Text>
+            <View style={{}}>
               {options.map((option, index) => (
-                <CustomButton
-                  key={index}
-                  isEditable={!selected}
-                  onPress={() => extractSelectedOption(option)}
-                  styles={`${styles.singleOption} ${
-                    selected && getOptionsBackgroundColor(option)
-                  }`}
-                  // className={`singleOption ${
-                  //   selected && getOptionsBackgroundColor(option)
-                  // }`}
-                  title={option}
-                />
+                <View key={index}>
+                  <TouchableOpacity
+                    onPress={() => extractSelectedOption(option)}
+                    style={selected ? getOptionsBackgroundColor(option) : styles.singleOption}              
+                  >
+                    <Text style={{marginTop: 10, padding: 20,}}>{option}</Text>
+                  </TouchableOpacity>
+                </View>
               ))}
             </View>
-            <View style={styles.quizApp_nav_button}>
+            <View style={styles.quizApp_nav_buttonx}>
               {selected && (
-                <CustomButton
+                <Button
                   onPress={() => {
                     proceedToNextQuestion("next");
-                    setShuffleQuestion(false);
+                    // setShuffleQuestion(false);
                   }}
                   title="next"
                 />
@@ -156,7 +163,7 @@ const Question = ({ setShuffleQuestion }) => {
             </View>
           </View>
         </View>
-      )}
+      {/* )} */}
     </View>
   );
 };

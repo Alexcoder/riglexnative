@@ -5,12 +5,12 @@ import { questions } from "../utilz";
 import Hook from "../../../Hooks/cementingHooks.jsx";
 import { Button, ScrollView, Text, View } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
-const Home = ({navigation}) => {
+const Home = () => {
   const [category, setCategory] = useState(questions[0].category);
   const [shuffleQuestion,setShuffleQuestion] = useState(false);
-  // const { navigation } = Hook();
+  const navigation  = useNavigation();
   const { navigate } = navigation;
 
   const extractCategory = () => {
@@ -47,7 +47,7 @@ const Home = ({navigation}) => {
           // style={styles.home_continue_button}
            onPress={() => {
             setShuffleQuestion(true);
-            navigate(`question`,  { category  });
+            navigate("quiz-question",  { category  });
           }}
         />
       </View>

@@ -7,9 +7,9 @@ const Result = ({ score, questionCategory, }) => {
   const percentageScore = ( score/questionCategory?.length ) * 100 ;
   const { 
     //  route , 
-    //  navigation, 
-     getItemInStorage, 
-     saveInStorage, 
+     navigation, 
+    //  getItemInStorage, 
+    //  saveInStorage, 
      clearItemInStorage }
     = Hooks();
   // const location = route;
@@ -18,10 +18,10 @@ const Result = ({ score, questionCategory, }) => {
   return (
     <View className="result-container">
       <View className="result-sub-cont">
-        <Text style={{fontWeight: 700}}>
-          Score {score} / {questionCategory?.length}
+        <Text style={{}}>
+          Score {score || 0} / {questionCategory?.length || 0}
         </Text>
-        <Text style={{fontWeight: 700}}>
+        <Text style={{}}>
           {percentageScore.toFixed(0)} %
         </Text>
         <Button
@@ -31,7 +31,7 @@ const Result = ({ score, questionCategory, }) => {
             clearItemInStorage("score");
             clearItemInStorage("quiz-finish");
             clearItemInStorage("currentIndex");
-            // navigate("plugjob");
+            navigation.navigate("quiz-question");
           }}
         />
       </View>
