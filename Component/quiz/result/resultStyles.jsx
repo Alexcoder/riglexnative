@@ -3,7 +3,12 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
 
    result_container :{
-       marginTop: 18,    
+       marginTop: 108,   
+       display: 'flex', 
+       flexDirection: 'column',
+       alignItems: 'center',
+       justifyContent: 'center',
+       columnGap: 20,
  },
   result_sub_cont :{
     color : 'black',

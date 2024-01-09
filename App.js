@@ -17,7 +17,6 @@ import PlugJob from "./Component/cementing/pages/Plug/Plug";
 import ConversionPage from './Component/cementing/Conversion/Conversion';
 import QuizHome from "./Component/quiz/home/home";
 import QuizQuestion from './Component/quiz/question/question';
-import QuizResult from './Component/quiz/result/result';
 
 
 export default function App() {
@@ -30,8 +29,10 @@ export default function App() {
     <StateContext>
       <JobContext>
         <NavigationContainer>
-         <Header />
-         <Navbarr />     
+         {/* <Header /> */}
+         <View style={{paddingTop: 40}}>
+         <Navbarr  />     
+         </View>
          {/* <Sidebar/> */}
          <Stack.Navigator
           screenOptions={{

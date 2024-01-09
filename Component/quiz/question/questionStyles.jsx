@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
         /* font-family: 'Courier New', Courier, monospace; */
         fontWeight: 500,
         // width: 200,
-        marginTop: 18,
+        marginTop: 22,
     },
     
     cate_count_container:{
@@ -62,7 +62,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-around',
         borderWidth: 2,
         borderColor : 'plum',
-        padding: 20,      
+        padding: 10,  
+        marginTop: 40    
       },
      question :{
         fontWeight: 600,
@@ -87,15 +88,10 @@ export const styles = StyleSheet.create({
       },
         
      singleOption :{
-        width: '100%',
-        height: 'max-content',
-        // paddingTop: 20,
-        // paddingBottom: 20,
-        // paddingLeft: 40,
-        // paddingRight: 40,
-        marginTop: 20,
+        marginTop: 12,
         borderRadius: 2,
         // boxShadow: '0 0 2px black',
+        borderWidth: 0.2,
         backgroundColor: 'lightgrey',
        fontWeight: 700,
     },
@@ -103,14 +99,11 @@ export const styles = StyleSheet.create({
     correct :{
         backgroundColor: 'rgb(7, 207, 0)',
         color: 'black',  
-        // width: '100%',
-        // height: 'max-content',
-        // paddingTop: 20,
-        // paddingBottom: 20,
-        paddingLeft: 40,
-        paddingRight: 40,
-        // marginTop: 20,
-        // borderRadius: 2,
+        marginTop: 10,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        borderRadius: 2,
         // // boxShadow: '0 0 2px black',
        fontWeight: 700,
 
@@ -119,14 +112,11 @@ export const styles = StyleSheet.create({
      wrong :{
         backgroundColor: 'rgb(233, 0, 0)',
         color: 'black',      
-    //     width: '100%',
-    //     height: 'max-content',
-        // paddingTop: 20,
-        // paddingBottom: 20,
-        paddingLeft: 40,
-        paddingRight: 40,
-    //     marginTop: 20,
-    //     borderRadius: 2,
+        marginTop: 10,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: 'lightgray',
+        borderRadius: 2,
     //     // boxShadow: '0 0 2px black',
        fontWeight: 700,
 
@@ -135,14 +125,6 @@ export const styles = StyleSheet.create({
         marginTop: 8,
         padding: 8,
     }
-    //  quizApp_nav_button >button :{
-    //     // width: 30,       
-    //     padding: 8,
-    //     backgroundColor: 'blue',
-    //     color: 'white',
-    //     borderRadius: 0.1rem,
-    // }
-    
     
       
 }) 
